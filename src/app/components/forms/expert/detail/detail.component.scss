@@ -1,0 +1,28 @@
+
+
+.example-small-box, .example-large-box {
+
+  align-items: center;
+  justify-content: center;
+  margin: 12px;
+  padding: 16px;
+  border-radius: 8px;
+
+}
+
+.example-small-box {
+  position: relative;
+  width: 1400px;
+  /* left: 400px; */
+}
+
+.example-large-box {
+  position: relative;
+  width: 1400px;
+/*   left: 400px; */
+}
+
+.fixArrangement{
+  display:inline-block;
+  margin-right: 5%;
+}

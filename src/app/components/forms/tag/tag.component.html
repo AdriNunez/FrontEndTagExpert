@@ -1,0 +1,14 @@
+<div class="form">
+<form [formGroup] = "formTag" (submit) ="saveTag()">
+  <div class="texto">
+    NOMBRE DE LA ETIQUETA
+    <div class="input">
+    <input matInput formControlName= "name" placeholder="Nombre de la etiqueta"/>
+    </div>
+  </div>
+  <button mat-raised-button type= "submit">
+    Crear etiqueta
+  </button>
+  </form>
+</div>
+

@@ -1,0 +1,63 @@
+
+<form [formGroup] = "formExpert" (submit) = "saveExpert()">
+  <div class="texto">
+    <div style=" margin-top: 15px;">
+      <span>
+        NOMBRE COMPLETO<span style="color: rgb(209, 113, 113)"> * </span>
+      </span>
+        <input style="width:100%" matInput formControlName = "nombre" placeholder="Ej: Juan Pérez Martinez"/>
+    </div>
+    <div style=" margin-top: 15px;">
+      <span>
+        NIF
+      </span>
+        <input style="width:100%" matInput formControlName = "dni" placeholder="Ej: 12345678A"/>
+    </div>
+    <div style=" margin-top: 15px;">
+      <span>
+        TELÉFONO<span style="color: rgb(209, 113, 113)"> * </span>
+      </span>
+        <input style="width:100%"matInput formControlName = "telefono" placeholder="Ej: +34 622 00 00 00"/>
+    </div>
+    <div style=" margin-top: 15px;">
+      <span>
+        EMAIL
+      </span>
+        <input style="width:100%" matInput formControlName = "correo" placeholder="Ej: juanperez@hotmail.com"/>
+    </div>
+    <div style=" margin-top: 15px;">
+      <span>
+        DIRECCIÓN
+      </span>
+        <input style="width:100%" matInput formControlName = "ciudad" placeholder="Ej:Avenida de Color, Valencia, Valencia"/>
+    </div>
+    <div style="margin-top: 15px">
+    <div >
+      <span>
+        DISPONIBILIDAD
+      </span>
+      <div>
+        <app-selector [data] = "dispo" [placeHolder]= "'Seleccionar Disponibilidad del Experto'" (emitData)= "setDispo($event)"></app-selector>
+      </div>
+    </div>
+  </div>
+  <div style="margin-bottom:60px">
+    <span>
+      ETIQUETAS
+    </span>
+    <div>
+      <app-selector [data] = "seleccionarTag" [placeHolder]= "'Añadir Etiquetas'" (emitData)= "aniadirEtiqueta($event)"></app-selector>
+      <div style="min-height: 50px;">
+        <span class="boxTag" *ngFor="let tag of taglist">{{tag.nombre}}<mat-icon style="cursor:pointer" (click)="borrarEtiqueta(tag)">close</mat-icon>
+      </span>
+    </div>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <div>
+      <button mat-raised-button class= "buttonPrimary" type="submit">
+        Crear nuevo experto</button>
+    </div>
+  </div>
+  </div>
+</form>

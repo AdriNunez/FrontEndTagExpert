@@ -1,0 +1,115 @@
+
+<form [formGroup] = "formDetailName">
+  <span>
+  <b>  NOMBRE</b> <span style="color: rgb(209, 113, 113)"> * </span>
+  </span>
+    <input style="width:100%" matInput formControlName = "nombre" (blur) = "updateExpert()"/>
+  <div style="margin-top: 25px">
+    <span>
+      <b>   NIF </b>
+    </span>
+    <input  style="width:100%" matInput formControlName = "dni" (blur) = "updateExpert()"/>
+  </div>
+
+
+  <div style="margin-top:25px" >
+    CREADO <span>{{experto.created_at | date: "dd MMM yyyy"}}</span>
+  </div>
+  <div>
+    ÚLTIMO CAMBIO  <span>{{experto.updated_at | date: "dd MMM yyyy"}}</span>
+</div>
+</form>
+
+
+ <mat-tab-group dynamicHeight>
+  <mat-tab label="Datos generales">
+    <div class="example-small-box mat-elevation-z4">
+      <form [formGroup] = "formDetail">
+        <div>
+          <div class="fixArrangement">
+            <span>
+              DISPONIBILIDAD
+            </span>
+            <div>
+              <app-selector [data] = "dispo" [placeHolder]= "experto.disponibilidad" (emitData)= "setDispo($event)"></app-selector>
+            </div>
+          </div>
+          <div class="fixArrangement">
+            <span>
+              ESTADO
+            </span>
+            <div>
+              <app-selector [data] = "status" [placeHolder]= "experto.estado" (emitData)= "setEstado($event)"></app-selector>
+            </div>
+          </div>
+          <div class="fixArrangement">
+            <span>
+              VALORACION
+            </span>
+            <div>
+              <app-selector [data] = "score" [placeHolder]= "experto.puntuacion" (emitData)= "setPuntuacion($event)"></app-selector>
+            </div>
+          </div>
+          <div class="fixArrangement">
+            <span>
+              ORIGEN
+            </span>
+            <div>
+              <app-selector [data] = "origin" [placeHolder]= "experto.origen" (emitData)= "setOrigen($event)"></app-selector>
+            </div>
+          </div>
+        </div>
+        <div class ="fixArrangement">
+          <span>
+            ETIQUETAS
+          </span>
+          <div>
+            <app-selector [data] = "seleccionarTag" [placeHolder]= "'Añadir Etiquetas'" (emitData)= "aniadirEtiqueta($event)"></app-selector>
+            <div >
+              <span class="boxTag" *ngFor="let tag of taglist">{{tag.nombre}}<mat-icon style="cursor:pointer" (click)="borrarEtiqueta(tag)">close</mat-icon>
+            </span>
+          </div>
+          </div>
+        </div>
+          <div>
+            <span>
+              TELÉFONO <span style="color: rgb(209, 113, 113)"> * </span>
+            </span>
+              <input style="width:100%" matInput formControlName = "telefono" placeholder="Ej: +34 622 00 00 00" (blur) = "updateExpert()"/>
+          </div>
+          <div style=" margin-top: 15px;">
+            <span>
+              EMAIL
+            </span>
+              <input style="width:100%;"  matInput formControlName = "correo" placeholder="Ej: juanperez@hotmail.com" (blur) = "updateExpert()"/>
+          </div>
+          <div style="margin-top: 15px">
+            <span>
+              DIRECCIÓN
+            </span>
+              <input style="width:100% ;" matInput formControlName = "ciudad" placeholder="Ej:Avenida de Color, Valencia, Valencia" (blur) = "updateExpert()"/>
+          </div>
+
+      </form>
+    </div>
+  </mat-tab>
+  <mat-tab label="Observaciones">
+    <div class="example-large-box mat-elevation-z4">
+      <form [formGroup] = "formDetailObservations">
+      <div>
+        <span>
+         Observaciones:
+        </span>
+        <input style="width:100%" matInput formControlName = "observaciones" (blur) = "updateExpert()"/>
+        <span style="display:block;margin-top:25px">
+          Motivo de descarte:
+         </span>
+         <input style="width:100%" matInput formControlName = "motivo" (blur) = "updateExpert()"/>
+      </div>
+    </form>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+
+
+

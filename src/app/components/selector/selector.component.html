@@ -1,0 +1,7 @@
+<mat-form-field appearance="fill">
+  <mat-select atNativeControl (selectionChange)="select($event)" placeholder={{placeHolder}}>
+    <mat-option *ngFor="let option of data" [value]="option.value">
+        {{option.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

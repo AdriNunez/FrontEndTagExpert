@@ -1,0 +1,17 @@
+table {
+  position:relative;
+  top: -45px;
+  width: 60%;
+  box-shadow: 0 4px 16px 0 rgba(0,0,0,0.11);
+  border-radius: 30px,30px,30px,30px;
+
+}
+
+th, td {
+  overflow: hidden;
+  width: 620px;
+  text-overflow: Ellipsis;
+  white-space: nowrap;
+}
+
+

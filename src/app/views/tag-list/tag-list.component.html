@@ -1,0 +1,42 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>
+      <div class= input-table>
+        ETIQUETA
+       <span><input matInput placeholder="Buscar por nombre" (keyup)="applyFilter($event)"></span>
+        </div> </th>
+    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="creator">
+    <th mat-header-cell *matHeaderCellDef>
+    <div class= input-table>
+      CREADOR
+     <span><input matInput style="display:none"></span>
+      </div> </th>
+    <td mat-cell *matCellDef="let element"> {{element.creador}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="creation_date">
+    <th mat-header-cell *matHeaderCellDef>
+    <div class= input-table>
+     FECHA CREACIÓN
+     <span><input matInput style="display:none"></span>
+      </div> </th>
+    <td mat-cell *matCellDef="let element; let index = index">
+      {{element.created_at | date: "dd/MM/YYYY"}}
+      <button mat-icon-button class="button-table" (click)="eraseTag(index)" [style] = "index==mouseoverIndex? 'display:inline':'display:none'"><mat-icon>delete_outline</mat-icon>  Borrar Etiqueta</button>
+      </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row;let i= index; columns: displayedColumns;"(mouseover)="showButton(i)"></tr>
+</table>
+<!-- <mat-paginator [length]="30"
+[pageSize]="filters.paginas"
+[pageSizeOptions]="pageSizeOptions" showFirstLastButtons (page)="getPaginatorData($event)" >
+</mat-paginator> -->
+<app-selector [data] = "limit" [placeHolder] = "'Límite Etiquetas'"(emitData)= "getPaginatorData($event)"></app-selector>
+
