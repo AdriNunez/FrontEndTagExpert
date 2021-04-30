@@ -25,7 +25,6 @@ export class TagService {
     if(filter.limite!=-1){
       this.url = this.url + `&limite=${filter.limite}`
     }
-    console.log(this.url)
     return this.http.get(this.url)
 
   }
